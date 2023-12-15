@@ -10,7 +10,7 @@ export default class BaseValidator {
     unique: 'O valor precisa ser único, e ele já está em uso',
     number: 'O campo precisa ser um número',
     range: 'O valor está fora da faixa do campo',
-    exists: 'O valor não foi encontrado',
+    exists: 'Senha ou E-mail não existe',
     confirmed: 'Não conferem os valores',
     regex: 'O campo foi preenchido incorretamente',
   }

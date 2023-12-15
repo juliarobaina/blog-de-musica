@@ -21,9 +21,22 @@
 import Route from '@ioc:Adonis/Core/Route'
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 
-Route.get('/', async ({ view }: HttpContextContract) => {
+//Vai pro controller da index pra eu exibir os posts na index rs
+Route.get("/", "HomeController.index").as('home.index')
+
+Route.get('/:id/post', 'PostsController.index').as('posts.index').namespace('App/Controllers/Http/Web')
+
+Route.get('/new', 'HomeController.create').as('home.create')
+Route.post('/new', 'UsersController.store').as('users.store').namespace('App/Controllers/Http/Web')
+
+Route.get('/login', 'SessionsController.create').as('sessions.create')
+Route.post('/login', 'SessionsController.store').as('sessions.store')
+Route.get('/logout', 'SessionsController.delete').as('sessions.delete')
+
+
+/*Route.get('/', async ({ view }: HttpContextContract) => {
   return view.render('home/show')
-}).as('home.show')
+}).as('home.show')*/
 
 // Route.group(() => {
 //   Route.group(() => {
@@ -48,26 +61,32 @@ Route.get('/', async ({ view }: HttpContextContract) => {
 Route.group(() => {
   Route.group(() => {
     Route.get('/', 'UsersController.index').as('index')
-    Route.get('/new', 'UsersController.create').as('create')
-    Route.get('/login', 'UsersController.login').as('login')
-    Route.post('/', 'UsersController.store').as('store')
+    //Route.get('/new', 'UsersController.create').as('create')
+    //Route.post('/', 'UsersController.store').as('store')
     Route.get('/:id/update', 'UsersController.update').as('update')
     Route.patch('/:id', 'UsersController.patch').as('patch')
     Route.get('/:id', 'UsersController.show').as('show')
-
-    
   })
     .prefix('/users')
     .as('users')
+    .middleware('auth')
 
   Route.group(() => {
-    Route.get('/', 'PostsController.index').as('index')
+    
     Route.get('/new', 'PostsController.create').as('create')
     Route.post('/', 'PostsController.store').as('store')
     Route.get('/:id/update', 'PostsController.update').as('update')
     Route.patch('/:id', 'PostsController.patch').as('patch')
     Route.get('/:id', 'PostsController.show').as('show')
+    Route.delete('/:id', 'PostsController.delete').as('delete')
+    //like
+    Route.get('/like/:id/:user', 'PostsController.like').as('like')
+    //favourites
+    Route.get('/showfavourites/:id', 'PostsController.showFavourites').as('showFavourites')
+    Route.get('/favourites/:id/:user', 'PostsController.favourite').as('favourite')
+   // 
   })
     .prefix('/posts')
     .as('posts')
+    .middleware('auth')
 }).namespace('App/Controllers/Http/Web')

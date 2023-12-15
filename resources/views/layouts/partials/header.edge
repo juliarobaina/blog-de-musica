@@ -1,18 +1,39 @@
-<header class="bg-amber-100 flex flex-row justify-center p-1">
+<header class="bg-stone-950 flex flex-row justify-center p-1">
   <div class="flex flex-row justify-between max-w-7xl w-full m-2 items-center">
     <div class="flex flex-row font-semibold text-2xl tracking-wide text-primary-900">
-      <a href="{{ route('home.show') }}" class="text-amber-950">Sabedoria Rural</a>
+      <a href="{{ route('home.index') }}" class="text-yellow-100">Musicalog!</a>
+      
     </div>
-    <nav class="flex flex-row gap-2">
+   
+    <nav class="flex flex-row gap-2">      
+      
+      @if(!auth.isLoggedIn)
+        @form.button({ href: route('sessions.create') })
+          Comece agora!
+        @end  
+      @else 
       @form.button({ href: route('posts.create') })
-        Escreva
+        Nova música!
       @end
-      @form.button({ href: route('posts.index') })
-        Comece aqui
+      @form.button({ href: route('posts.show', {id:auth.user.id}) })
+        Suas músicas
       @end
-      @form.button({ href: route('users.login') })
-        Entrar
-      @end
+        
+      @form.button({ href: route('sessions.delete') })
+      Sair
+      @end  
+
+      
+
+      @form.button({ href: route('posts.showFavourites', {id:auth.user.id}) })
+      Favoritos
+      @end  
+
+      
+      @form.button({ href: route('users.update',{id:auth.user.id}) })
+      Atualizar Cadastro
+      @end  
+      @endif
     </nav>
   </div>
 </header>

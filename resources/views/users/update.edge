@@ -1,24 +1,48 @@
 @layout('layouts/main')
 
 @section('content')
-  <p>
-    Atualize o usuário
-  </p>
-  <form action="{{ route('users.patch', { id: user.id }, { qs: { _method: 'PATCH' }}) }}" method="POST">
-    <div>
-      <label>
-        Email:
-      </label>
-      <input type="email" name="email" placeholder="Email" value="{{ user.email }}" />
-    </div>
-    <div>
-      <label>
-        Senha:
-      </label>
-      <input type="password" name="password" placeholder="Senha" />
-    </div>
-    <button type="submit">
-      Atualizar
-    </button>
-  </form>
+<div class="flex flex-col items-center justify-center p-10">
+  
+  <h1 class="mb-4 mt-0 text-2xl font-medium leading-tight text-yellow-100 text-center">
+    Atualize seu cadastro!
+  </h1>
+  <div class="w-full max-w-screen-md ">
+    <form class="bg-stone-800 shadow-lg rounded px-8 pt-6 pb-8 mb-4 w-full" action="{{ route('users.patch', { id: user.id }, { qs: { _method: 'PATCH' }}) }}" method="POST">
+      <div class="text-yellow-100 font-bold text-sm mb-4">
+        <label for="name">
+          Nome:
+        </label>
+        <input class="shadow appearance-none border rounded w-full py-2 px-3 bg-stone-900 text-yellow-100 leading-tight " type="text" name="name" placeholder="Nome" value="{{ auth.user.name }}" />
+      </div>
+      <div class="mb-4 text-yellow-100 font-bold text-sm">
+        <label for="username">
+          Nome de Usuário:
+        </label>
+        <input class="shadow appearance-none border rounded w-full py-2 px-3 bg-stone-900 text-yellow-100 leading-tight focus:outline-none focus:shadow-outline" type="text" name="username" placeholder="Nome de Usuário" value="{{ user.username }}" />
+      </div>
+      <div class="mb-4 text-yellow-100 font-bold text-sm">
+        <label for="email">
+          Email:
+        </label>
+        <input class="shadow appearance-none border rounded w-full py-2 px-3 bg-stone-900 text-yellow-100 leading-tight focus:outline-none focus:shadow-outline" type="email" name="email" placeholder="Email" value="{{ user.email }}" />
+      </div>
+      <div class="mb-4 text-yellow-100 font-bold text-sm">
+        <label for="password">
+          Senha:
+        </label>
+        <input class="shadow appearance-none border rounded w-full py-2 px-3 bg-stone-900 text-yellow-100 leading-tight focus:outline-none focus:shadow-outline" type="password" name="password" placeholder="Senha"/>
+      </div>
+      </div>
+      <!--<div>
+        <label>
+          Senha:
+        </label>
+        <input type="password" name="password" placeholder="Senha" />
+      </div>-->
+      <button type="submit" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-yellow-100 bg-stone-600 shadow-lg rounded-lg hover:scale-105 focus:bg-stone-700 focus:outline-none ">
+        Atualizar
+      </button>
+    </form>
+  </div>
+</div>
 @end

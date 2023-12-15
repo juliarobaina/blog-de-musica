@@ -1,11 +1,14 @@
 # Blog de Música
- Projeto para Programação Web de um blog de compartilhamento de conhecimento musicais ou músicas.
+ Projeto para Programação Web de um blog de compartilhamento de conhecimento musicais ou músicas feitas por compositores independentes.
 
 ## Instalação do Desenvolvimento
+
+
 
 1 - Criar a pasta temporária para o banco SQLite
 
 ```console
+
 mkdir tmp
 ```
 
@@ -21,8 +24,14 @@ cp .env.example .env
 npm install
 ```
 
+4 - Configurar o banco
+
+```console
+node ace migration:run
+```
+
 ## Execução
 
 ```console
-npm ace serve --watch
+node ace serve --watch
 ```

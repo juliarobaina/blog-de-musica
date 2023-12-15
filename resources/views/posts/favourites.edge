@@ -3,16 +3,13 @@
 @section('content')
 
 <div class="flex-grow bg-stone-900">
-  <!-- ... Seu código anterior ... -->
-
   <div class="grid sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 gap-6 p-10 w-4xl min-h-7x1 mx-auto">
-    <!-- Loop displaying the posts (data coming from the controller) -->
     @each(p in post)
     <div class="post md:mx-5 h-auto text-start m-2 p-6 bg-stone-800 rounded-lg shadow-md">
       <a href="#">
-        <h5 class="mb-2 text-2xl line-clamp-2 font-bold tracking-tight text-yellow-100">{{p.title}}</h5>
+        <h5 class="mb-2 text-2xl line-clamp-1 font-bold tracking-tight text-yellow-100">{{p.title}}</h5>
       </a>
-      <p class="mb-3 font-normal text-yellow-100 opacity-50 line-clamp-4 whitespace-break-spaces">{{p.content.substr(0,200)}}</p>
+      <p class="mb-3 font-normal text-yellow-100 opacity-50 line-clamp-4 whitespace-break-spaces">{{p.content.substr(0, 200)}}</p>
       <div class="tooltip-text">
         <a href="{{route('posts.index', {id:p.id})}}" class="relative inline-flex items-center px-3 py-2 text-sm font-medium text-center text-yellow-100 shadow-lg bg-stone-600 rounded-lg hover:scale-105 focus:bg-stone-700">
           Leia mais

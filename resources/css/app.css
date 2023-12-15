@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.post:hover .opacity-0 {
+    opacity: 1;
+  }

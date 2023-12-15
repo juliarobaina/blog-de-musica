@@ -1,0 +1,24 @@
+/* Defina a cor do fundo e da borda do toolbar para coincidir com a textarea */
+#editor .ql-toolbar {
+    background-color: #333;
+    border-bottom: 1px solid #444;
+    color: #fff;
+}
+
+/* Defina a cor dos ícones do toolbar */
+.custom-quill-container .ql-toolbar .ql-picker-options {
+    background-color: #333;
+    color: #fff;
+}
+  
+/* Defina a cor de fundo dos itens do menu suspenso */
+.custom-quill-container .ql-toolbar .ql-picker-options li {
+    background-color: #333;
+    color: #fff;
+}
+
+/* Defina a cor de fundo do item do menu suspenso selecionado */
+.custom-quill-container .ql-toolbar .ql-picker-options .ql-selected {
+    background-color: #555;
+    color: #fff;
+}

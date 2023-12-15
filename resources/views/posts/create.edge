@@ -1,23 +1,29 @@
 @layout('layouts/main')
 
 @section('content')
-  <form action="{{ route('posts.store') }}" method="POST">
 
-    <div>
-      @!form.legend({ name: 'Título'})
-      @!form.input({ name: 'title', type: 'text' })
-    </div>
+<div class="p-10 flex justify-center">
+  <div class="w-full max-w-screen-md ">
+    <h1 class="mb-4 mt-0 text-2xl font-medium leading-tight text-yellow-100 text-center">Crie seu Post</h1>
 
-    <div>
-      @!form.legend({ name: 'Conteúdo'})
-      @!form.input({ name: 'content', type: 'text' })
-    </div>
+    <form action="{{ route('posts.store') }}" method="POST" class="bg-stone-800 shadow-lg rounded-lg px-8 pt-6 pb-8 mb-4 w-full">
+      <input type="hidden" name='id' value="{{ auth.user.id }}">
+      <div class="mb-6">
+        @!form.label({ nameFor: 'titulo', name: 'Título'})
+        @!form.input({ name: 'title', type: 'text' })
+      </div>
 
-    <div>
-      @form.button()
-        Salvar
-      @end
-    </div>
-  </form>
+      <div class="mb-6"><!-- quando dá o submit e deu um erro no título por exemplo que ele volta pra essa página, tudo que tava no textarea some, isso pode ser um problema -->
+        @!form.label({ nameFor: 'textarea', name: 'Conteúdo do Post'})
+        @!form.textarea({ name: 'content'})
+      </div>
 
+      <div class="flex items-center justify-between">
+        @form.button()
+          Salvar
+        @end
+      </div>
+    </form>
+  </div>
+</div>
 @end
